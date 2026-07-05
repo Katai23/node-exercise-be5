@@ -22,7 +22,7 @@ const { Pool } = pg.default;
 // แก้ไขโค้ดเพื่อให้เชื่อมต่อกับ Database ได้ข้างล่างนี้ 🔽🔽🔽
 const pool = new Pool({
 	connectionString:
-		"postgresql://postgres:littleluis@localhost:5432/postgres_database",
+		"postgresql://postgres:postgrespassword@localhost:5432/postgres_database",
 });
 
 export { pool };
