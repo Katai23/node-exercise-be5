@@ -10,20 +10,21 @@ app.use(express.json());
 
 app.post("/movies", async (req, res) => {
 
-	const title =	req.body.title;
-	const description = req.body.description;
-	const genres = req.body.genres;
-	const year = req.body.year;
-	const poster = req.body.poster;
-	const rating = req.body.rating;
+	try {
+			const newMovie = req.body;
 
-	const result = await pool.query(`
-		INSERT INTO movies (title, description, genres, year, poster, rating)
-		VALUES ($1, $2, $3, $4, $5, $6)`,
-		[title, description, genres, year, poster, rating]);
-	
+			await pool.query(`
+				INSERT INTO movies (title, description, genres, year, poster, rating)
+				VALUES ($1, $2, $3, $4, $5, $6)`,
+				[newMovie.title, newMovie.description, newMovie.genres, newMovie.year, newMovie.poster, newMovie.rating]);
+			
+			return res.json({message: "Movie has been created. "});
+	}
+	catch(e)
+	{
+		return res.json({message: e.message });
+	}
 
-	return res.json({message: "Movie has been created. "});
 
 });
 
