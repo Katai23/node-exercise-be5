@@ -14,6 +14,6 @@ app.get("/movies", async (req, res) => {
 	});
 });
 
-app.listen(port, () => {
-	console.log(`🚀 Server is running at ${port}`);
+app.listen(4000, () => {
+	console.log(`🚀 Server is running at ${4000}`);
 });
